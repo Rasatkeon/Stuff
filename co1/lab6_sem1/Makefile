@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c --std=c++1y
+CFLAGS=-c --std=c++1y -Wall
 LDFLAGS=--std=c++1y
 SOURCES=main.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
