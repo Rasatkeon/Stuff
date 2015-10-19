@@ -187,4 +187,57 @@ public class MyList<T> {
             return Optional.empty();
         }
     }
+
+    /**
+     * @param index index of element in the list
+     * @return Optional of element if succeeds. Optional empty otherwise
+     */
+    public Optional<T> searchByIndex(int index) {
+        Optional<Node<T>> resultNode = searchNodeByIndex (index);
+        if (resultNode.isPresent()) return Optional.of(resultNode.get().getData());
+        return Optional.empty();
+    }
+
+    /**
+     * @param index index of node in the list
+     * @return Optional of node if succeeds. Optional empty otherwise
+     */
+    private Optional<Node<T>> searchNodeByIndex (int index) {
+        // Bad conditions
+        if (First == null ||
+                index <  0    ||
+                index >= Size   ) return Optional.empty();
+
+        // Why iterating over the whole list if you have two ways to iterate?
+        int halfSize = Size / 2;
+        if (index <= halfSize) return getNthFromHead(index);
+        if (index >  halfSize) return getNthFromLast(Size - index - 1);
+
+        // That line shouldn't be achievable.
+        return Optional.empty();
+    }
+
+    /**
+     * @param index n to get Nth from head starting from 0.
+     * @return Nth node from head.
+     */
+    private Optional<Node<T>> getNthFromHead(int index) {
+        Node<T> curr = First;
+        for (int i = 0; i != index; ++i) {
+            curr = curr.Next;
+        }
+        return Optional.of(curr);
+    }
+
+    /**
+     * @param index n to get Nth from last starting from 0.
+     * @return Nth node from last.
+     */
+    private Optional<Node<T>> getNthFromLast(int index) {
+        Node<T> curr = Last;
+        for (int i = 0; i != index; ++i) {
+            curr = curr.Prev;
+        }
+        return Optional.of(curr);
+    }
 }

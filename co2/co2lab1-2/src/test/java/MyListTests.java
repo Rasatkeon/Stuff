@@ -51,4 +51,15 @@ public class MyListTests {
         List.removeFirst(10);
         assertEquals(List.getLast(), new Integer(42));
     }
+    @Test
+    public void testIndexSearch() {
+        MyList<Integer> List = new MyList<>();
+        for ( int i = 0; i <= 10; i++ ) {
+            List.append(i);
+        }
+        assertEquals(List.searchByIndex(4).get(), new Integer(4));
+        assertEquals(List.searchByIndex(9).get(), new Integer(9));
+        assertEquals(List.searchByIndex(0).get(), List.getFirst());
+        assertEquals(List.searchByIndex(10).get(), List.getLast());
+    }
 }
