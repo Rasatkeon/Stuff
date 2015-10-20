@@ -69,16 +69,21 @@ public class MyList<T> {
      */
     public boolean addAfter(T key, T value) {
         Node<T> keyNode = searchFirstNode(key).get();
-        if (keyNode == null) return false;
+        return addAfterThis(keyNode, value);
+    }
+
+    private boolean addAfterThis(Node<T> node, T value) {
+        if (node == null) return false;
         else {
-            Node<T> nextNode = keyNode.Next;
-            keyNode.Next = new Node<>(value);
-            keyNode.Next.Next = nextNode;
-            nextNode.Prev = keyNode.Next;
-            keyNode.Next.Prev = keyNode;
+            Node<T> nextNode = node.Next;
+            node.Next = new Node<>(value);
+            node.Next.Next = nextNode;
+            nextNode.Prev = node.Next;
+            node.Next.Prev = node;
             return true;
         }
     }
+
 
     /**
     @return `null` if list is empty. Otherwise first node value.
@@ -106,14 +111,15 @@ public class MyList<T> {
      * @param node Node to remove.
      * @see #removeFirst(Object)
      */
-    private void removeThis(Node<T> node) {
-        if (node == null) return;
+    private boolean removeThis(Node<T> node) {
+        if (node == null) return false;
         Size--;
         if (node.Prev != null) node.Prev.Next = node.Next;
         else First = node.Next;
         if (node.Next != null) node.Next.Prev = node.Prev;
         else Last = node.Prev;
         node.Data = null;
+        return true;
     }
 
     /**
@@ -193,7 +199,7 @@ public class MyList<T> {
      * @return Optional of element if succeeds. Optional empty otherwise
      */
     public Optional<T> searchByIndex(int index) {
-        Optional<Node<T>> resultNode = searchNodeByIndex (index);
+        Optional<Node<T>> resultNode = searchNodeByIndex(index);
         if (resultNode.isPresent()) return Optional.of(resultNode.get().getData());
         return Optional.empty();
     }
@@ -239,5 +245,17 @@ public class MyList<T> {
             curr = curr.Prev;
         }
         return Optional.of(curr);
+    }
+
+    public boolean removeByIndex(int index) {
+        Optional<Node<T>> node = searchNodeByIndex(index);
+        if (node.isPresent()) return removeThis(node.get());
+        return false;
+    }
+
+    public boolean addAfterIndex(int index, T value) {
+        Optional<Node<T>> node = searchNodeByIndex(index);
+        if (node.isPresent()) return addAfterThis(node.get(), value);
+        return false;
     }
 }

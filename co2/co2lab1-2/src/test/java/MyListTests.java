@@ -62,4 +62,32 @@ public class MyListTests {
         assertEquals(List.searchByIndex(0).get(), List.getFirst());
         assertEquals(List.searchByIndex(10).get(), List.getLast());
     }
+    @Test
+    public void testRemoveByIndex() {
+        MyList<Integer> List = new MyList<>();
+        for ( int i = 0; i <= 10; i++ ) {
+            List.append(i);
+        }
+        List.removeFirst(9);
+        MyList<Integer> SecList = new MyList<>();
+        for ( int i = 0; i <= 10; i++ ) {
+            SecList.append(i);
+        }
+        SecList.removeByIndex(9);
+        assertEquals(List.searchByIndex(9), SecList.searchByIndex(9));
+    }
+    @Test
+    public void testAddByIndex() {
+        MyList<Integer> List = new MyList<>();
+        for ( int i = 0; i <= 10; i++ ) {
+            List.append(i);
+        }
+        List.addAfter(9, 42);
+        MyList<Integer> SecList = new MyList<>();
+        for ( int i = 0; i <= 10; i++ ) {
+            SecList.append(i);
+        }
+        SecList.addAfterIndex(9, 42);
+        assertEquals(List.searchByIndex(10), SecList.searchByIndex(10));
+    }
 }
