@@ -1,4 +1,5 @@
 import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
  * Custom realisation of abstract data structure `List`
@@ -247,15 +248,48 @@ public class MyList<T> {
         return Optional.of(curr);
     }
 
+    /**
+     * @param index index of element to remove
+     * @return true if succeeds otherwise false
+     */
     public boolean removeByIndex(int index) {
         Optional<Node<T>> node = searchNodeByIndex(index);
         if (node.isPresent()) return removeThis(node.get());
         return false;
     }
 
+    /**
+     * @param index index of an element to add new value after
+     * @param value value to add
+     * @return true if succeeds otherwise false
+     */
     public boolean addAfterIndex(int index, T value) {
         Optional<Node<T>> node = searchNodeByIndex(index);
         if (node.isPresent()) return addAfterThis(node.get(), value);
         return false;
+    }
+
+    /**
+     * @param f function implementing functional interface Consumer<T>
+     */
+    public void traverseFromFirst(Consumer<T> f) {
+        if (First == null) return;
+        Node<T> curr = First;
+        while (curr != null) {
+            f.accept(curr.getData());
+            curr = curr.Next;
+        }
+    }
+
+    /**
+     * @param f function implementing functional interface Consumer<T>
+     */
+    public void traverseFromLast(Consumer<T> f) {
+        if (Last == null) return;
+        Node<T> curr = Last;
+        while (curr != null) {
+            f.accept(curr.getData());
+            curr = curr.Prev;
+        }
     }
 }
