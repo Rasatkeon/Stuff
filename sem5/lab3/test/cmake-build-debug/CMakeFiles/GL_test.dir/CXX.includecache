@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/timecat/Documents/sem5/ЭВМ/labs/lab3/src/test/main.cpp
+cmath
+-
+iostream
+-
+SDL2/SDL.h
+-
+SDL2/SDL_ttf.h
+-
+pointBuffer.hpp
+/home/timecat/Documents/sem5/ЭВМ/labs/lab3/src/test/pointBuffer.hpp
+
+/home/timecat/Documents/sem5/ЭВМ/labs/lab3/src/test/pointBuffer.cpp
+pointBuffer.hpp
+/home/timecat/Documents/sem5/ЭВМ/labs/lab3/src/test/pointBuffer.hpp
+
+/home/timecat/Documents/sem5/ЭВМ/labs/lab3/src/test/pointBuffer.hpp
+cstddef
+-
+cstring
+-
+functional
+-
+

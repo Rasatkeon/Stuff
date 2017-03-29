@@ -1,0 +1,3 @@
+/home/timecat/Documents/sem5/ЭВМ/labs/lab3/src/test/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/timecat/Documents/sem5/ЭВМ/labs/lab3/src/test/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/timecat/Documents/sem5/ЭВМ/labs/lab3/src/test/cmake-build-debug/CMakeFiles/GL_test.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++    -O2 -Wall -Wextra -l SDL2_ttf -l SDL2 -g   CMakeFiles/GL_test.dir/main.cpp.o CMakeFiles/GL_test.dir/pointBuffer.cpp.o  -o GL_test 

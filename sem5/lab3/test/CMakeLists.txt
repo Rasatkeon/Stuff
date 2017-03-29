@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.6)
+project(GL_test)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall -Wextra -l SDL2_ttf -l SDL2")
+set(SOURCE_FILES main.cpp pointBuffer.cpp pointBuffer.hpp)
+
+add_executable(GL_test ${SOURCE_FILES})
+
+#INCLUDE(FindPkgConfig)
+
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "./out")
+
+configure_file(DejaVuMathTeXGyre.ttf DejaVuMathTeXGyre.ttf COPYONLY)
+
+#PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
+#PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf)
+
+#TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2TTF_LIBRARIES})
+#INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2TTF_INCLUDE_DIRS})
+
+
